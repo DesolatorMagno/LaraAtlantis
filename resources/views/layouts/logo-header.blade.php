@@ -1,4 +1,4 @@
-<div class="logo-header" data-background-color="dark2">
+<div class="logo-header" data-background-color="{{ config('theme.themes.' . config('theme.active') . '.logo' )}}">
     <a href="" class="logo">
         <span class="navbar-brand text-muted">AdminPanel</span>
     </a>

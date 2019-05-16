@@ -28,7 +28,7 @@
         @stack('style')
 
     </head>
-    <body data-background-color="dark">
+    <body data-background-color="{{ config('theme.themes.' . config('theme.active') . '.body' )}}">
         <div class="wrapper">
             <div class="main-header">
                 @include('layouts.logo-header')
