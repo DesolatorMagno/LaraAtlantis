@@ -1,0 +1,6 @@
+<?php
+
+return [
+
+    'theme' => 'Theme'
+];
