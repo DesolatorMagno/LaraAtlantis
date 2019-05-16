@@ -15,10 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/tema-dark', function () {
+Route::get('/tema', function () {
     return view('tema-index');
-});
-
-Route::get('/tema-light', function () {
-    return view('welcome');
 });
