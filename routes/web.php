@@ -12,9 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('tema-index');
 });
 
 Route::get('/tema', function () {
-    return view('tema-index');
-});
+    return view('theme.index');
+})->name('theme');
+
+Route::get('/tema/list', function () {
+    return view('theme.list');
+})->name('theme.list');

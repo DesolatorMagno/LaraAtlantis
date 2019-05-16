@@ -112,6 +112,7 @@
                         </ul>
                     </div>
                 </li>
+                @stack('sidebar')
             </ul>
         </div>
     </div>
