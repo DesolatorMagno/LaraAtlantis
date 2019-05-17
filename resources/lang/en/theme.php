@@ -2,5 +2,8 @@
 
 return [
 
-    'theme' => 'Theme'
+    'theme'    => 'Theme',
+    'name'     => 'Name',
+    'age'      => 'Age',
+    'location' => 'Location',
 ];

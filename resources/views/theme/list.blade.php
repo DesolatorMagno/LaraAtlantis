@@ -7,7 +7,7 @@
                 <div class="card-header">
                     <div class="d-flex align-items-center">
                         <h4 class="card-title">
-                            <h2>{{ trans('general.company') }} {{ trans('general.list') }}</h2>
+                            <h2>{{ trans('theme.theme') }} {{ trans('general.list') }}</h2>
                         </h4>
                         <a href="" class="btn btn-primary btn-round ml-auto btn-add">
                             <i class="fa fa-plus"></i>
@@ -20,22 +20,24 @@
                         <table class="display table table-striped table-hover" id="company-table">
                             <thead>
                                 <tr>
-                                    <th>@lang('attributes.name')</th>
-                                    <th>@lang('attributes.website')</th>
+                                    <th>@lang('theme.name')</th>
+                                    <th>@lang('theme.age')</th>
+                                    <th>@lang('theme.location')</th>
                                     <th>@lang('general.actions')</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- for each-->
+                             @foreach ($themes as $theme)
                                 <tr>
-                                    <td>{{ '$company->name' }}</td>
-                                    <td><a href="{{ '$company->website' }}" target="_blank">{{ '$company->website' }}</a></td>
+                                    <td>{{ $theme->name }}</td>
+                                    <td>{{ $theme->age }}</td>
+                                    <td>{{ $theme->location }}</td>
                                     <td>
                                         <div class="btn-toolbar" role="toolbar" aria-label="">
                                             <div class="btn-group" role="group" aria-label="">
                                                 <a href="" class="btn btn-sm btn-info">@lang('general.details')</a>
                                                 <a href="" class="btn btn-sm btn-success">@lang('general.edit')</a>
-                                                <form action="" method="POST">
+                                            <form action="{{ route('theme.destroy', ['id'=>$theme->id]) }}" method="POST">
                                                     @method('DELETE')
                                                     @csrf
                                                     <button class="btn btn-sm btn-danger crud-delete" type="button" onclick="">@lang('general.delete')</button>
@@ -44,6 +46,7 @@
                                         </div>
                                     </td>
                                 </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>
