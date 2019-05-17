@@ -16,9 +16,15 @@ Route::get('/', function () {
 });
 
 Route::get('/tema', function () {
-    return view('theme.index');
+    return view('theme.theme-test');
 })->name('theme');
 
 Route::get('/tema/list', function () {
     return view('theme.list');
 })->name('theme.list');
+
+
+
+    Route::resource('theme', 'ThemeController');
+
+
