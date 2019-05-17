@@ -9,9 +9,9 @@
                         <h4 class="card-title">
                             <h2>{{ trans('theme.theme') }} {{ trans('general.list') }}</h2>
                         </h4>
-                        <a href="" class="btn btn-primary btn-round ml-auto btn-add">
+                        <a href="{{ route('theme.create') }}" class="btn btn-primary btn-round ml-auto btn-add">
                             <i class="fa fa-plus"></i>
-                            {{ trans('general.new', ['model' => trans('general.company')]) }}
+                            {{ trans('general.new', ['model' => trans('theme.theme')]) }}
                         </a>
                     </div>
                 </div>

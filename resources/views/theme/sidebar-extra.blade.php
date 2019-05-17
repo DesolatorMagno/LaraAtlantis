@@ -14,7 +14,7 @@
                 </a>
             </li>
             <li class="li-add">
-                <a href="">
+                <a href="{{ route('theme.create') }}">
                     <i class="fas fa-plus"></i>
                     <span>{{ trans('general.new', ['model' => trans('theme.theme')]) }}</span>
                 </a>
