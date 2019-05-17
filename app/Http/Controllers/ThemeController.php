@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ThemeRequest;
 
 class ThemeController extends Controller
 {
@@ -54,7 +55,7 @@ class ThemeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ThemeRequest $request)
     {
         //return "Store";
         return \redirect()->route('theme.index')->with('message', trans("msg.created", ['model' => trans('theme.theme')]))->with('message_type', 'success');
@@ -99,7 +100,7 @@ class ThemeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ThemeRequest $request, $id)
     {
         //return "Update";
         return redirect()->route('theme.index')->with('message', trans("msg.updated", ['model' => trans('theme.theme')]))->with('message_type', 'success');
