@@ -1,5 +1,5 @@
 @if (session('message'))
-    @push('scrypt')
+    @push('script')
     <script>
         function showMensage() {
             const Toast = Swal.mixin({

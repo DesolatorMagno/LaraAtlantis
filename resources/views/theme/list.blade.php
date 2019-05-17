@@ -60,7 +60,7 @@
     </div>
 </div>
 @endsection
-@push('scrypt')
+@push('script')
 <script>
 activateMenu('theme','li-list');
 </script>

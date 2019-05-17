@@ -32,7 +32,7 @@ class ThemeController extends Controller
      */
     public function create()
     {
-        //
+        return "Create";
     }
 
     /**
@@ -43,7 +43,7 @@ class ThemeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "Store";
     }
 
     /**
@@ -54,7 +54,7 @@ class ThemeController extends Controller
      */
     public function show($id)
     {
-        //
+        return "Show";
     }
 
     /**
@@ -65,7 +65,7 @@ class ThemeController extends Controller
      */
     public function edit($id)
     {
-        //
+        return "Edit";
     }
 
     /**
@@ -77,7 +77,7 @@ class ThemeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return "Update";
     }
 
     /**
@@ -88,6 +88,6 @@ class ThemeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return "Destroy!!!";
     }
 }

@@ -78,6 +78,6 @@
             }
         }
     </script>
-    @stack('scrypt')
+    @stack('script')
 
 </html>
