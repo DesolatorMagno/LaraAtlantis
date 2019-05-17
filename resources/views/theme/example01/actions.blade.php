@@ -19,7 +19,7 @@
                         @endif
                         <div class="form-group">
                             <label for="name">@lang('theme.name')</label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="" placeholder="@lang('theme.name')" value="{{ $theme ? old('name', $theme->name) : '' }}" {{ $type == "show" ? 'disabled' : ''}}>
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="" placeholder="@lang('theme.name')" value="{{ $theme ? old('name', $theme->name) : old('name', '') }}" {{ $type == "show" ? 'disabled' : ''}}>
                             @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -28,7 +28,7 @@
                         </div>
                         <div class="form-group">
                             <label for="age">@lang('theme.age')</label>
-                            <input type="number" class="form-control @error('age') is-invalid @enderror" name="age" id="" placeholder="@lang('theme.age')" value="{{ $theme ? old('age', $theme->age) : '' }}" {{ $type == "show" ? 'disabled' : ''}}>
+                            <input type="number" class="form-control @error('age') is-invalid @enderror" name="age" id="" placeholder="@lang('theme.age')" value="{{ $theme ? old('age', $theme->age) : old('age', '') }}" {{ $type == "show" ? 'disabled' : ''}}>
                             @error('age')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -37,7 +37,7 @@
                         </div>
                         <div class="form-group">
                             <label for="location">@lang('theme.location')</label>
-                            <input type="text" class="form-control @error('location') is-invalid @enderror" name="location" id="" placeholder="@lang('theme.location')" value="{{ $theme ? old('location', $theme->location) : '' }}" {{ $type == "show" ? 'disabled' : ''}}>
+                            <input type="text" class="form-control @error('location') is-invalid @enderror" name="location" id="" placeholder="@lang('theme.location')" value="{{ $theme ? old('location', $theme->location) : old('location', '') }}" {{ $type == "show" ? 'disabled' : ''}}>
                             @error('location')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
