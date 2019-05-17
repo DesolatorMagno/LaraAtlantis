@@ -17,15 +17,25 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="display table table-striped table-hover" id="company-table">
+                        <table class="display table table-striped table-hover" id="theme-table">
                             <thead>
+                                <tr>
+                                    <th>@lang('theme.name')</th>
+                                    <th>@lang('theme.age')</th>
+                                    <th>@lang('theme.location')</th>
+                                    <th style="width: 100px;" class="label-align-center" >@lang('general.actions')</th>
+                                </tr>
+                            </thead>
+                            <!--
+                            <tfoot>
                                 <tr>
                                     <th>@lang('theme.name')</th>
                                     <th>@lang('theme.age')</th>
                                     <th>@lang('theme.location')</th>
                                     <th>@lang('general.actions')</th>
                                 </tr>
-                            </thead>
+                            </tfoot>
+                        -->
                             <tbody>
                              @foreach ($themes as $theme)
                                 <tr>
@@ -33,16 +43,20 @@
                                     <td>{{ $theme->age }}</td>
                                     <td>{{ $theme->location }}</td>
                                     <td>
-                                        <div class="btn-toolbar" role="toolbar" aria-label="">
-                                            <div class="btn-group" role="group" aria-label="">
-                                                <a href="" class="btn btn-sm btn-info">@lang('general.details')</a>
-                                                <a href="" class="btn btn-sm btn-success">@lang('general.edit')</a>
+                                        <div class="form-button-action">
+                                            <a data-toggle="tooltip" title="" class="btn btn-link btn-primary" data-original-title="Details" href="{{ route('theme.show', ['id'=>$theme->id]) }}">
+                                                <i class="fa fa-info"></i>
+                                            </a>
+                                            <a data-toggle="tooltip" title="" class="btn btn-link btn-success" data-original-title="Edit Task" href="{{ route('theme.edit', ['id'=>$theme->id]) }}">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
                                             <form action="{{ route('theme.destroy', ['id'=>$theme->id]) }}" method="POST">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <button class="btn btn-sm btn-danger crud-delete" type="button" onclick="">@lang('general.delete')</button>
-                                                </form>
-                                            </div>
+                                                @method('DELETE')
+                                                @csrf
+                                                <button type="button" data-toggle="tooltip"  title="" class="btn btn-link btn-danger crud-delete" data-original-title="@lang('general.delete')" onclick="deleteForm(this)">
+                                                    <i class="fa fa-times"></i>
+                                                </button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
@@ -54,13 +68,13 @@
                 <div class="card-footer">
                     <a href="{{ route('theme') }}" class="btn btn-outline-dark text-white">@lang('general.back')</a>
                 </div>
-                @include('partials.datable', ['tableName' => 'company-table'])
+                @include('partials.datable', ['tableName' => 'theme-table'])
             </div>
         </div>
     </div>
 </div>
 @endsection
-@push('scrypt')
+@push('script')
 <script>
 activateMenu('theme','li-list');
 </script>
