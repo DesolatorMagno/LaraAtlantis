@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ThemeRequest;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class ThemeController extends Controller
 {
@@ -15,7 +17,7 @@ class ThemeController extends Controller
         $this->themes = collect([
             (object) ['id' => 1, 'name' => 'Light', 'age' => '15', 'location' => 'Far Away'],
             (object) ['id' => 2, 'name' => 'Blue', 'age' => '19', 'location' => 'Very Close'],
-            (object) ['id' => 3, 'name' => 'Dark', 'age' => '23', 'location' => 'Very Very Close'],
+            (object) ['id' => 3, 'name' => 'Dark', 'age' => '23', 'location' => 'Algeria'],
         ]);
     }
 
@@ -45,6 +47,7 @@ class ThemeController extends Controller
         $salida = [
             'type'    => 'store',
             'theme' => "",
+            'countries' => json_decode(Storage::disk('json')->get('countries.json'))
         ];
         return view('theme.example01.actions', $salida);
     }
@@ -89,6 +92,7 @@ class ThemeController extends Controller
         $salida = [
             'type'    => 'update',
             'theme' => $this->themes[$id - 1],
+            'countries' => json_decode(Storage::disk('json')->get('countries.json'))
         ];
         return view('theme.example01.actions', $salida);
     }
@@ -103,6 +107,7 @@ class ThemeController extends Controller
     public function update(ThemeRequest $request, $id)
     {
         //return "Update";
+        Log::debug($request);
         return redirect()->route('theme.index')->with('message', trans("msg.updated", ['model' => trans('theme.theme')]))->with('message_type', 'success');
     }
 
@@ -116,5 +121,10 @@ class ThemeController extends Controller
     {
         //return "Destroy!!!";
         return \redirect()->route('theme.index')->with('message', \trans("msg.deleted", ['model' => trans('theme.theme')]))->with('message_type', 'warning');
+    }
+
+    public function cityList()
+    {
+        Storage::disk('json')->get('countries.json');
     }
 }

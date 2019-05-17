@@ -37,7 +37,15 @@
                         </div>
                         <div class="form-group">
                             <label for="location">@lang('theme.location')</label>
-                            <input type="text" class="form-control @error('location') is-invalid @enderror" name="location" id="" placeholder="@lang('theme.location')" value="{{ $theme ? old('location', $theme->location) : old('location', '') }}" {{ $type == "show" ? 'disabled' : ''}}>
+                            <select class="form-control @error('location') is-invalid @enderror" name="location" id="location" {{ $type == 'show' ? 'disabled' : '' }}>
+                            @if ($type == 'show')
+                                <option value="{{ $theme->location }}" selected>{{ $theme->location }} </option>
+                            @else
+                                @foreach ($countries as $country)
+                                <option value="{{ $country->name }}" {{ $theme ? $theme->location == $country->name ? 'selected' : '' : ''  }}>{{ $country->name }} </option>
+                                @endforeach                                 
+                            @endif
+                            </select>
                             @error('location')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -56,6 +64,7 @@
 </div>
 @endsection
 @push('style')
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
 <style>
     :disabled {
         color: #6c757d!important;
@@ -63,12 +72,15 @@
 </style>
 @endpush
 @push('script')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
 <script>
 @if ($type == 'store')
     activateMenu('theme','li-add');
 @else
     activateMenu('theme','');
 @endif
+
+$('#location').select2();
 </script>
 @endpush
 @include('theme.sidebar-extra')
