@@ -62,7 +62,7 @@
     }
 </style>
 @endpush
-@push('scrypt')
+@push('script')
 <script>
 @if ($type == 'store')
     activateMenu('theme','li-add');
@@ -71,3 +71,4 @@
 @endif
 </script>
 @endpush
+@include('theme.sidebar-extra')
