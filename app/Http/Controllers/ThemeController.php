@@ -6,6 +6,18 @@ use Illuminate\Http\Request;
 
 class ThemeController extends Controller
 {
+    private $themes;
+
+    public function __construct()
+    {
+        //$this->middleware('auth');
+        $this->themes = collect([
+            (object) ['id' => 1, 'name' => 'Light', 'age' => '15', 'location' => 'Far Away'],
+            (object) ['id' => 2, 'name' => 'Blue', 'age' => '19', 'location' => 'Very Close'],
+            (object) ['id' => 3, 'name' => 'Dark', 'age' => '23', 'location' => 'Very Very Close'],
+        ]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,16 +25,12 @@ class ThemeController extends Controller
      */
     public function index()
     {
-        $themes = collect([
-            (object) ['id' => 1, 'name' => 'light', 'age' => '15', 'location' => 'Far Away'],
-            (object) ['id' => 2, 'name' => 'blue', 'age' => '19', 'location' => 'Very Close'],
-            (object) ['id' => 3, 'name' => 'dark', 'age' => '23', 'location' => 'Very Very Close'],
-        ]);
+
         $salida = [
             //'themes' => Theme::all(),
-            'themes' => $themes,
+            'themes' => $this->themes,
         ];
-        return view('theme.index', $salida);
+        return view('theme.example01.index', $salida);
     }
 
     /**
@@ -32,7 +40,12 @@ class ThemeController extends Controller
      */
     public function create()
     {
-        return "Create";
+        //return "Create";
+        $salida = [
+            'type'    => 'store',
+            'theme' => "",
+        ];
+        return view('theme.example01.actions', $salida);
     }
 
     /**
@@ -43,7 +56,8 @@ class ThemeController extends Controller
      */
     public function store(Request $request)
     {
-        return "Store";
+        //return "Store";
+        return \redirect()->route('theme.index')->with('message', trans("msg.created", ['model' => trans('theme.theme')]))->with('message_type', 'success');
     }
 
     /**
@@ -54,7 +68,12 @@ class ThemeController extends Controller
      */
     public function show($id)
     {
-        return "Show";
+        //return "show";
+        $salida = [
+            'type'    => 'show',
+            'theme' => $this->themes[$id - 1],
+        ];
+        return view('theme.example01.actions', $salida);
     }
 
     /**
@@ -65,7 +84,12 @@ class ThemeController extends Controller
      */
     public function edit($id)
     {
-        return "Edit";
+        //return "Edit";
+        $salida = [
+            'type'    => 'update',
+            'theme' => $this->themes[$id - 1],
+        ];
+        return view('theme.example01.actions', $salida);
     }
 
     /**
@@ -77,7 +101,8 @@ class ThemeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return "Update";
+        //return "Update";
+        return redirect()->route('theme.index')->with('message', trans("msg.updated", ['model' => trans('theme.theme')]))->with('message_type', 'success');
     }
 
     /**
@@ -88,6 +113,7 @@ class ThemeController extends Controller
      */
     public function destroy($id)
     {
-        return "Destroy!!!";
+        //return "Destroy!!!";
+        return \redirect()->route('theme.index')->with('message', \trans("msg.deleted", ['model' => trans('theme.theme')]))->with('message_type', 'warning');
     }
 }
