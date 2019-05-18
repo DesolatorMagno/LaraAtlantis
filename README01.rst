@@ -3,14 +3,16 @@ Instalación de Laravel con Tema AtlantisLite
 =============================================
 
 Utilización
-###########
+------------
 
+- Profit!
 - Clonar el proyecto, crear la app key e instalar todos los componentes (solo utiliza los básicos de Laravel) con composer.
 - Utilizar la view **tema-index.blade.php** como base para tu proyecto.
-- Eso es todo, ya puedes disfrutar de tu tema.
+- ????
+- Profit!
 
 Extras
-########
+-------
 
 - Dentro del archivo .env crear una variable **APP_THEME** con valor **dark** o **blue** para seleccionar entre tema obscuro o 
   claro (el claro viene por defecto).
